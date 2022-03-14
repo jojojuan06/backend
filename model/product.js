@@ -11,4 +11,4 @@ const productSchema = mongoose.Schema({
 })
 
 // model  transforme ce modèle en un modèle utilisable (nom du model,schema)
-module.exports = mongoose.model('Sauce', productSchema);
+module.exports = mongoose.model('Product', productSchema);
