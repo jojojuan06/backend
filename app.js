@@ -1,6 +1,11 @@
 //importation de l'application node-js
 const express =  require('express'); //aplication express require pour importer package express
 const mongoose = require('mongoose'); // importez mongoose dans votre fichier 
+//-------
+
+// enregistrer notre nouveau routeur dans notre fichier app.js--------
+const productRoutes = require('./routes/product');
+//---------
 
 // proteger les donnée------
 require('dotenv').config(); 
@@ -29,7 +34,10 @@ mongoose.connect(`${process.env.DB_LOGIN_ACCOUNT}`, // DB_LOGIN_ACCOUNT identifi
 //acces au corp de la requete (body)
 app.use(express.json());// intercepte toute les requetes qui on un content type json (format) et mais a disposition dans le  cors sur objet req  (body)
 
+// enregistrer notre routeur pour toutes les demandes effectuées vers /api/product
+app.use('/api/products', productRoutes);
 
 // exporter cette application pour y avoir acces depuis les autre fichier de notre projet notament le server node
 module.exports = app;
- 
+
+
