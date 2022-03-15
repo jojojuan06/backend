@@ -7,12 +7,12 @@ const Product = require('../model/product');
 
 // POST
 exports.createProduct = (req, res, next) => {
-    delete req.body._id; // recuperer id de la req body
+    //delete req.body._id; // recuperer id de la req body
     const product = new Product({
     ...req.body //copie de l'objet existant avec spred recupere l'objet de la req body
     });
     product.save()
-    .then(() => res.status(201).json({ product: Product }))//retourne une promise asynchrone qui attend ,201 la requête a réussi avec le message
+    .then(() => res.status(201).json({ product }))//retourne une promise asynchrone qui attend ,201 la requête a réussi avec le message
     .catch(error => res.status(400).json({ error }));// capture l'erreur et renvoi un message erreur (egale error: error)
 };
 // PUT 
@@ -43,6 +43,6 @@ exports.getOneProduct = (req, res, next) => {//req.params.id acces a l'id des pa
 //GET
 exports.getAllProduct = (req, res, next) => {
     Product.find() //liste des produits (sous forme de tableau)
-    .then(products => res.status(200).json(products)) // retourne la response 200 pour ok pour la methode http , revoi le tableaux des products recu
+    .then(products => res.status(200).json({ products })) // retourne la response 200 pour ok pour la methode http , revoi le tableaux des products recu
     .catch(error => res.status(400).json({ error })); // capture l'erreur et renvoi un message erreur (egale error: error)
 };
