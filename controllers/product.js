@@ -5,14 +5,11 @@ const Product = require('../model/product');
 
 //---------controller------------- (contenue des routes)
 
-
-
 // POST
 exports.createProduct = (req, res, next) => {
-    const productObject = JSON.parse(req.body.product);
-    delete productObject._id;
+    delete req.body._id; // recuperer id de la req body
     const product = new Product({
-    ...productObject    //copie de l'objet existant avec spred
+    ...req.body //copie de l'objet existant avec spred recupere l'objet de la req body
     });
     product.save()
     .then(() => res.status(201).json({ product: Product }))//retourne une promise asynchrone qui attend ,201 la requête a réussi avec le message
