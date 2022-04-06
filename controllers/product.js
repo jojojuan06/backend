@@ -1,5 +1,5 @@
 //importer de model Product crée , pouvoir utiliser notre nouveau modèle Mongoose dans l'application, nous devons l'importer dans le fichier
-const Product = require('../model/product');
+const Product = require('../models/product');
 
 
 
