@@ -16,7 +16,7 @@ exports.createProduct = (req, res, next) => {
     .catch(error => res.status(400).json({ error }));// capture l'erreur et renvoi un message erreur (egale error: error)
 };
 // PUT 
-exports.modifyProduct = (req, res, next) => {
+exports.updateProduct = (req, res, next) => {
     Product.updateOne({ //objet de comparaison
     _id: req.params.id // compare ensuite que les deux id sont les meme
     },{ ...req.body  , _id: req.params.id //  req.body recuperer l'objet envoyer 2eme arg nouvelle objet (produit dans le cort de la req et le comparer a  l'id de la req)

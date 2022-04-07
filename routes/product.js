@@ -7,7 +7,7 @@ const router = express.Router(); // avec la methode routeur d'expresse (ex rempl
 
 //---------  Routes  ----------- CRUD methode
 router.post('/', productControllers.createProduct)
-router.put('/:id', productControllers.modifyProduct);
+router.put('/:id', productControllers.updateProduct);
 router.delete('/:id',  productControllers.deleteProduct);
 router.get('/:id', productControllers.getOneProduct);
 router.get('/',  productControllers.getAllProduct);
